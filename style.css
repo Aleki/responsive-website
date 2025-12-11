@@ -52,6 +52,7 @@
     --color-main-bg: var(--c-white);
     --color-text-dark: var(--c-grey-dark);
     --color-text-light: var(--c-white);
+    --color-header-bg: var(--c-purple);
     --color-hero-bg: var(--c-purple);
     --color-button-primary-bg: var(--c-teal);
     --color-button-primary-text: var(--c-grey-dark);
@@ -102,6 +103,7 @@
   picture,
   svg {
     max-width: 100%;
+    height: auto;
     display: block;
   }
 
@@ -112,6 +114,63 @@
 }
 
 @layer components {
+  .topnav {
+    background-color: var(--color-header-bg);
+
+    .topnav__wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 12px;
+
+      @media (width>=calc( 600 / 16 * 1rem)) {
+        padding-block: 20px;
+      }
+    }
+    .top__homelink {
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .topnav__logo {
+      width: calc(70 / 16 * 1rem);
+      height: auto;
+
+      @media (width>=calc( 600 / 16 * 1rem)) {
+        width: calc(128 / 16 * 1rem);
+      }
+    }
+
+    .topnav__links {
+      display: flex;
+      gap: 20px;
+      list-style-type: none;
+      padding: 0;
+
+      @media (width>=calc( 600 / 16 * 1rem)) {
+        gap: 40px;
+      }
+    }
+
+    .topnav__item {
+    }
+
+    .topnav__link {
+      font-size: var(--font-size-topnav);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+
+      &:hover {
+        text-decoration: underline 2px;
+        text-underline-offset: 4px;
+        /* opacity: 0.8; */
+      }
+    }
+  }
 }
 
 @layer utilities {
@@ -122,5 +181,14 @@
     width: 1px;
     height: 1px;
     overflow: hidden;
+
+    &.skip:focus {
+      left: 0;
+      width: auto;
+      height: auto;
+      border: 1px solid;
+      background: #fff;
+      padding: 10px;
+    }
   }
 }
